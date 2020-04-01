@@ -48,6 +48,7 @@
     <Compile Include="Individuos\Empleado.cs" />
     <Compile Include="Individuos\Empleados\Cajero.cs" />
     <Compile Include="Individuos\Jefe.cs" />
+    <Compile Include="ListadeSuperMercado.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="Producto.cs" />
     <Compile Include="Program.cs" />

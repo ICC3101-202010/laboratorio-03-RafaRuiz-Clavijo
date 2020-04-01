@@ -52,6 +52,21 @@ namespace Supermercado
             return this.nacionalidad;
         }
 
+        public int GetDay()
+        {
+            return this.diadenacimiento;
+        }
+
+        public int GetMonth()
+        {
+            return this.mesdenacimiento;
+        }
+
+        public int GetYear()
+        {
+            return this.anodenacimiento;
+        }
+
 
     }
 }

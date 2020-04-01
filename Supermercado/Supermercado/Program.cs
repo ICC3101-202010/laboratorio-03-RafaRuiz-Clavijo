@@ -17,14 +17,14 @@ namespace Supermercado
                 Console.WriteLine("MENU SUPERMERCADO JUMBO SHARP");
                 Console.WriteLine("Bienvenido a la simulacion de un supermercado que nunca existio, que desea hacer?");
                 Console.WriteLine("");
-                Console.WriteLine("1) Agregar persona");
-                Console.WriteLine("2) Agregar producto");
-                Console.WriteLine("3) Ver personas");
+                Console.WriteLine("1) Agregar Persona");
+                Console.WriteLine("2) Agregar Producto");
+                Console.WriteLine("3) Ver Personas");
                 Console.WriteLine("4) Ver Productos");
-                Console.WriteLine("5) Modificar empleado");
-                Console.WriteLine("6) Comprar como cliente");
+                Console.WriteLine("5) Modificar Empleado");
+                Console.WriteLine("6) Comprar como Cliente");
                 Console.WriteLine("7) Registro de Compras");
-                Console.WriteLine("8) Salir del supermercado");
+                Console.WriteLine("8) Salir del Supermercado");
                 Console.WriteLine("Escriba numero de la opcion: ");
                 opt = Convert.ToInt32(Console.ReadLine());
 

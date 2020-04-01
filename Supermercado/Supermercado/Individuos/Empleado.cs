@@ -40,5 +40,21 @@ namespace Supermercado.Individuos
         {
             return this.sector;
         }
+
+        public void CambioSueldo(int newsueldo)
+        {
+            sueldo = newsueldo;
+        }
+
+        public void CambioPuesto(string newpuesto)
+        {
+            sector = newpuesto;
+        }
+
+        public void CambioHoraTrabajo(string nuevahorainicio, string nuevahorafinal)
+        {
+            horainicio = nuevahorainicio;
+            horafinal = nuevahorafinal;
+        }
     }
 }

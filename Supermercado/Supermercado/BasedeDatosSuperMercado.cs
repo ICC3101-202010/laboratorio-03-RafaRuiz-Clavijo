@@ -188,6 +188,85 @@ namespace Supermercado
             }
             Console.WriteLine("Indique persona a modificar: ");
             int modificar = Convert.ToInt32(Console.ReadLine());
+            int punto = modificar - empleadosnocaja;
+            Console.WriteLine("Indique que atributo quiere cambiar: ");
+            Console.WriteLine("1) Sueldo");
+            Console.WriteLine("2) Horario de trabajo");
+            Console.WriteLine("3) Puesto de trabajo");
+            int cambio = Convert.ToInt32(Console.ReadLine());  
+            switch (cambio)
+            {
+                 case 1:
+                    {
+                          Console.WriteLine("Indique el nuevo sueldo del empleado: ");
+                          int nuevosueldo = Convert.ToInt32(Console.ReadLine());
+                          if (modificar < empleadosnocaja)
+                          {
+                            emp[modificar - 1].CambioSueldo(nuevosueldo);
+                          }
+                          else
+                          {
+                            caja[punto].CambioSueldo(nuevosueldo);
+                          }
+                          break;
+                    }
+                        
+                 case 2:
+                    {
+                          Console.WriteLine("Indique la hora de inicio del empleado (XX:XX): ");
+                          string nuevahorainicio = Console.ReadLine();
+                          Console.WriteLine("Indique la hora de termino del empleado (XX:XX): ");
+                          string nuevahoratermino = Console.ReadLine();
+                          if (modificar < empleadosnocaja)
+                          {
+                            emp[modificar - 1].CambioHoraTrabajo(nuevahorainicio, nuevahoratermino);
+                          }
+                          else
+                          {
+                            caja[punto].CambioHoraTrabajo(nuevahorainicio, nuevahoratermino);
+                          }
+                          break;
+                    }
+                 case 3:
+                    {
+
+                        Console.WriteLine("Indique el nuevo puesto de trabajo: ");
+                        string nuevopuesto = Console.ReadLine();
+                        if (modificar < empleadosnocaja)
+                        {
+
+                            if (nuevopuesto.ToUpper() == "CAJA")
+                            {
+                                Console.WriteLine("Indique la nueva caja del nuevo cajero: ");
+                                int nuevacaja = Convert.ToInt32(Console.ReadLine());
+                                Individuos.Empleados.Cajero newbox = new Individuos.Empleados.Cajero(emp[modificar - 1].GetName(), emp[modificar - 1].GetLastName(), emp[modificar - 1].GetRUT(), emp[modificar - 1].GetDay(), emp[modificar - 1].GetMonth(), emp[modificar - 1].GetYear(), emp[modificar - 1].GetNacion(), emp[modificar - 1].GetMoney(), "CAJA", nuevacaja, emp[modificar - 1].GetStartWork(), emp[modificar - 1].GetFinishWork());
+                                caja.Add(newbox);
+                                emp.Remove(emp[modificar - 1]);
+                            }
+                            else
+                            {
+                                emp[modificar - 1].CambioPuesto(nuevopuesto);
+                            }
+                            
+                        }
+                        else
+                        {
+                            Individuos.Empleado newempleado = new Individuos.Empleado(caja[punto].GetName(), caja[punto].GetLastName(), caja[punto].GetRUT(), caja[punto].GetDay(), caja[punto].GetMonth(), caja[punto].GetYear(), caja[punto].GetNacion(), caja[punto].GetMoney(), nuevopuesto, caja[punto].GetStartWork(), caja[punto].GetFinishWork());
+                            emp.Add(newempleado);
+                            caja.Remove(caja[punto]);
+
+                        }
+                        break;
+                    }
+                    default:
+                        {
+                            Console.WriteLine("No existe ese criterio");
+                            break;
+                        }
+
+            }
+
+            
         }
 
 
