@@ -20,5 +20,25 @@ namespace Supermercado.Individuos
             this.horainicio = horainicio;
             this.horafinal = horafinal;
         }
+
+        public int GetMoney()
+        {
+            return this.sueldo;
+        }
+
+        public string GetStartWork()
+        {
+            return this.horainicio;
+        }
+
+        public string GetFinishWork()
+        {
+            return this.horafinal;
+        }
+
+        public string GetSector()
+        {
+            return this.sector;
+        }
     }
 }

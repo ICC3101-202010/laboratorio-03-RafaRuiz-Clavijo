@@ -27,6 +27,31 @@ namespace Supermercado
             this.nacionalidad = nacionalidad;
         }
 
+        public string GetName()
+        {
+            return this.nombre;
+        }
+
+        public string GetLastName()
+        {
+            return this.apellido;
+        }
+
+        public string GetRUT()
+        {
+            return this.RUT;
+        }
+
+        public string GetFecha()
+        {
+            return diadenacimiento + "/" + mesdenacimiento + "/" + anodenacimiento;
+        }
+
+        public string GetNacion()
+        {
+            return this.nacionalidad;
+        }
+
 
     }
 }

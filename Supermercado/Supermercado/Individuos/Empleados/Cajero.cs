@@ -14,5 +14,10 @@ namespace Supermercado.Individuos.Empleados
         {
             this.caja = caja;
         }
+
+        public int GetBox()
+        {
+            return this.caja;
+        }
     }
 }

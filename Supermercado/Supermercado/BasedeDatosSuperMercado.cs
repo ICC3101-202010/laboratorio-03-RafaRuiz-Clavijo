@@ -103,6 +103,93 @@ namespace Supermercado
             Console.WriteLine("Producto creado con exito!!!");
         }
 
+        public void VerPersonas()
+        {
+            Console.WriteLine("Nuestros Jefes: ");
+            foreach (Individuos.Jefe dato in boss)
+            {
+                Console.WriteLine("");
+                Console.WriteLine("Nombre: " + dato.GetName() + " " + dato.GetLastName());
+                Console.WriteLine("RUT: " + dato.GetRUT());
+                Console.WriteLine("Fecha de Nacimiento: " + dato.GetFecha());
+                Console.WriteLine("Nacionalidad: " + dato.GetNacion());
+                Console.WriteLine("Dinero disponible: " + dato.GetBossMoney());
+            }
+
+            Console.WriteLine("");
+            Console.WriteLine("Nuestros Empleados: ");
+            foreach (Individuos.Empleado dato in emp)
+            {
+                Console.WriteLine("");
+                Console.WriteLine("Nombre: " + dato.GetName() + " " + dato.GetLastName());
+                Console.WriteLine("RUT: " + dato.GetRUT());
+                Console.WriteLine("Fecha de Nacimiento: " + dato.GetFecha());
+                Console.WriteLine("Nacionalidad: " + dato.GetNacion());
+                Console.WriteLine("Sueldo: " + dato.GetMoney());
+                Console.WriteLine("Horario de trabajo: " + dato.GetStartWork() + " - " + dato.GetFinishWork());
+                Console.WriteLine("Sector de trabajo: " + dato.GetSector());
+            }
+            foreach (Individuos.Empleados.Cajero dato in caja)
+            {
+                Console.WriteLine("");
+                Console.WriteLine("Nombre: " + dato.GetName() + " " + dato.GetLastName());
+                Console.WriteLine("RUT: " + dato.GetRUT());
+                Console.WriteLine("Fecha de Nacimiento: " + dato.GetFecha());
+                Console.WriteLine("Nacionalidad: " + dato.GetNacion());
+                Console.WriteLine("Sueldo: " + dato.GetMoney());
+                Console.WriteLine("Horario de trabajo: " + dato.GetStartWork() + " - " + dato.GetFinishWork());
+                Console.WriteLine("Sector de trabajo: " + dato.GetSector());
+                Console.WriteLine("Caja: " + dato.GetBox());
+            }
+
+            Console.WriteLine("");
+            Console.WriteLine("Nuestros Clientes: ");
+            foreach(Individuos.Cliente dato in cli)
+            {
+                Console.WriteLine("");
+                Console.WriteLine("Nombre: " + dato.GetName() + " " + dato.GetLastName());
+                Console.WriteLine("RUT: " + dato.GetRUT());
+                Console.WriteLine("Fecha de Nacimiento: " + dato.GetFecha());
+                Console.WriteLine("Nacionalidad: " + dato.GetNacion());
+                Console.WriteLine("Dinero disponible: " + dato.GetClientMoney());
+            }
+            
+        }
+
+        public void VerProductos()
+        {
+            Console.WriteLine("");
+            Console.WriteLine("Nuestros Productos: ");
+            foreach (Producto dato in prod)
+            {
+                Console.WriteLine("");
+                Console.WriteLine("Nombre del producto: " + dato.GetName());
+                Console.WriteLine("Tipo de Producto: " + dato.GetClass());
+                Console.WriteLine("Marca del Producto: " + dato.GetMarca());
+                Console.WriteLine("Precio del Producto: " + dato.GetPrice());
+                Console.WriteLine("Stock Disponible: " + dato.GetCantidad());
+            }
+        }
+
+        public void ModificarStaff()
+        {
+            Console.WriteLine("Elija la persona a modificar");
+            int i = 1;
+            foreach (Individuos.Empleado dato in emp)
+            {
+                Console.WriteLine(i + ") " + dato.GetName() + " " + dato.GetLastName() + " |Puesto: " + dato.GetSector() + " |Horario de trabajo: " + dato.GetStartWork() + " - " + dato.GetFinishWork() + " |Sueldo: " + dato.GetMoney());
+                i += 1;
+            }
+            int empleadosnocaja = i;
+            foreach (Individuos.Empleados.Cajero dato in caja)
+            {
+                Console.WriteLine(i + ") " + dato.GetName() + " " + dato.GetLastName() + " |Puesto: Caja"  + " |Horario de trabajo: " + dato.GetStartWork() + " - " + dato.GetFinishWork() + " |Sueldo: " + dato.GetMoney());
+                i += 1;
+            }
+            Console.WriteLine("Indique persona a modificar: ");
+            int modificar = Convert.ToInt32(Console.ReadLine());
+        }
+
 
 
     }

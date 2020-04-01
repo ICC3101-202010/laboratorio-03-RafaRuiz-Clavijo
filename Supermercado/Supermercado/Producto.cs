@@ -23,6 +23,30 @@ namespace Supermercado
             this.tipo = tipo;
         }
 
+        public string GetName()
+        {
+            return this.nombre;
+        }
+
+        public int GetPrice()
+        {
+            return this.precio;
+        }
+
+        public string GetMarca()
+        {
+            return this.marca;
+        }
+
+        public int GetCantidad()
+        {
+            return this.cantidad;
+        }
+
+        public string GetClass()
+        {
+            return this.tipo;
+        }
 
     }
 }

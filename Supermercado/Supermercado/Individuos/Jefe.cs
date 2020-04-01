@@ -15,6 +15,11 @@ namespace Supermercado.Individuos
         {
             this.dinerosupermercado = dinerosupermercado;
         }
+
+        public int GetBossMoney()
+        {
+            return this.dinerosupermercado;
+        }
     }
 
 }
