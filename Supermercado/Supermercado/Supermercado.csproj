@@ -43,6 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BasedeDatosSuperMercado.cs" />
+    <Compile Include="Individuos\Cliente.cs" />
+    <Compile Include="Individuos\Empleado.cs" />
+    <Compile Include="Individuos\Empleados\Cajero.cs" />
+    <Compile Include="Individuos\Jefe.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="Producto.cs" />
     <Compile Include="Program.cs" />
@@ -50,6 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Productos\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

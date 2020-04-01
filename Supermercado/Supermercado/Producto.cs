@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Supermercado
 {
-    class Producto
+    public class Producto
     {
-        string nombre;
-        int precio;
-        string marca;
-        int cantidad;
-        string tipo;
+        private string nombre;
+        private int precio;
+        private string marca;
+        private int cantidad;
+        private string tipo;
 
         public Producto(string nombre, int precio, string marca, int cantidad, string tipo)
         {

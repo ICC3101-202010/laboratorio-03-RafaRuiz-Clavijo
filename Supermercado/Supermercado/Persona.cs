@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Supermercado
 {
-    class Persona
+    public class Persona
     {
-        string nombre;
-        string apellido;
-        string RUT;
-        int diadenacimiento;
-        int mesdenacimiento;
-        int anodenacimiento;
-        string nacionalidad;
+        protected string nombre;
+        protected string apellido;
+        protected string RUT;
+        protected int diadenacimiento;
+        protected int mesdenacimiento;
+        protected int anodenacimiento;
+        protected string nacionalidad;
 
         public Persona(string nombre, string apellido, string RUT, int diadenacimiento, int mesdenacimiento, int anodenacimiento, string nacionalidad)
         {
