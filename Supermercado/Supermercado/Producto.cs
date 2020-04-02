@@ -48,5 +48,10 @@ namespace Supermercado
             return this.tipo;
         }
 
+        public void CambiarCantidad(int cantidadcomprada)
+        {
+            cantidad -= cantidadcomprada;
+        }
+
     }
 }

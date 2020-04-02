@@ -13,6 +13,7 @@ namespace Supermercado
         List<Individuos.Empleado> emp = new List<Individuos.Empleado>();
         List<Individuos.Jefe> boss = new List<Individuos.Jefe>();
         List<Individuos.Empleados.Cajero> caja = new List<Individuos.Empleados.Cajero>();
+        List<ListadeSuperMercado> compras = new List<ListadeSuperMercado>();
 
         public void CrearPersona()
         {
@@ -269,7 +270,106 @@ namespace Supermercado
             
         }
 
+        public void Comprar()
+        {
+            Console.WriteLine("Clientes disponibles: ");
+            int i = 1;
+            foreach (Individuos.Cliente dato in cli)
+            {
+                Console.WriteLine(i + ") " + dato.GetName() + " " + dato.GetLastName() + " |Dinero: "+ dato.GetClientMoney());
+                i += 1;
+            }
+            Console.WriteLine("Elija con un numero: ");
+            int option = Convert.ToInt32(Console.ReadLine());
 
+            int dinerodisponible = cli[option - 1].GetClientMoney();
+            int menucompra = 0;
+            ListadeSuperMercado newlista = new ListadeSuperMercado();
+            int dinerogastado = 0;
+            while (menucompra != 3)
+            {
+                Console.WriteLine("");
+                Console.WriteLine("MENU DE COMPRAS");
+                Console.WriteLine("");
+                Console.WriteLine("1) Elegir producto");
+                Console.WriteLine("2) Ver mis productos");
+                Console.WriteLine("3) Comprar");
+                Console.WriteLine("");
+                Console.WriteLine("Elija con un numero su opcion: ");
+                menucompra = Convert.ToInt32(Console.ReadLine());
+                if (menucompra == 1)
+                {
+                    int elegirproducto = 1;
+                    foreach(Producto data in prod)
+                    {
+                        Console.WriteLine(elegirproducto + ")  Nombre del producto: " + data.GetName() + " |Marca: " + data.GetMarca() + " |Precio: " + data.GetPrice() + " |Tipo: " + data.GetClass() + " |Unidades Disponibles: " + data.GetCantidad());
+                        elegirproducto += 1;
+                    }
+
+                    Console.WriteLine("Ingrese el producto que quiere con su numero: ");
+                    int objetocomprado = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("Ingrese la cantidad de unidades que quiere: ");
+                    int objetosadquiridos = Convert.ToInt32(Console.ReadLine());
+                    if (objetosadquiridos <= prod[objetocomprado - 1].GetCantidad())
+                    {
+                        if (prod[objetocomprado-1].GetPrice()*objetosadquiridos < dinerodisponible)
+                        {
+                            for (int k = 0; k < objetosadquiridos; k++)
+                            {
+                                newlista.listadecompras.Add(prod[objetocomprado - 1]);
+                            }
+                            dinerogastado += prod[objetocomprado - 1].GetPrice() * objetosadquiridos;
+                            prod[objetocomprado - 1].CambiarCantidad(objetosadquiridos);
+                            Console.WriteLine("Productos agregados con exito!!!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Lo siento, el cliente no tiene ese dinero, intente reducir las cantidades");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Lo siento, no existe la cantidad que desea");
+                    }
+                }
+                else if (menucompra == 2)
+                {
+                    int obs = 1;
+                    foreach(Producto data in newlista.listadecompras)
+                    {
+                        Console.WriteLine(obs + ")  Nombre del producto: " + data.GetName() + " |Marca: " + data.GetMarca() + " |Precio: " + data.GetPrice() + " |Tipo: " + data.GetClass());
+                        obs += 1;
+                    }
+                }
+            }
+
+            if (dinerogastado < dinerodisponible)
+            {
+                cli[option - 1].ClientBuy(dinerogastado);
+                Console.WriteLine("Compra realizada, al cliente le costo $" + dinerogastado);
+                compras.Add(newlista);
+            }
+            else
+            {
+                Console.WriteLine("La compra no se pudo realizar, no tiene dinero suficiente");
+            }
+
+        }
+
+        public void VerCompras()
+        {
+            int i = 1;
+            foreach(ListadeSuperMercado data in compras)
+            {
+                Console.WriteLine("Compra Numero " + i);
+                int a = 1;
+                foreach (Producto data2 in data.listadecompras)
+                {
+                    Console.WriteLine(a + ")  Nombre del producto: " + data2.GetName() + " |Marca: " + data2.GetMarca() + " |Precio: " + data2.GetPrice() + " |Tipo: " + data2.GetClass());
+                    a += 1
+                }
+            }
+        }
 
     }
 }

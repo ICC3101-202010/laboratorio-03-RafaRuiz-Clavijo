@@ -8,7 +8,7 @@ namespace Supermercado
 {
     class ListadeSuperMercado
     {
-        List<Producto> listadecompras = new List<Producto>();
+        public List<Producto> listadecompras = new List<Producto>();
 
 
     }

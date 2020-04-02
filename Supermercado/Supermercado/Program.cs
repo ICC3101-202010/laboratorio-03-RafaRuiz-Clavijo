@@ -53,6 +53,16 @@ namespace Supermercado
                     bdd.ModificarStaff();
                 }
 
+                else if (opt == 6)
+                {
+                    bdd.Comprar();
+                }
+
+                else if (opt == 7)
+                {
+                    bdd.VerCompras();
+                }
+
                 Console.WriteLine("_________________________________________");
                 Console.WriteLine("");
 

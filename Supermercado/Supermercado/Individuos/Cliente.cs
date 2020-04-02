@@ -19,5 +19,10 @@ namespace Supermercado.Individuos
         {
             return this.dinero;
         }
+
+        public void ClientBuy(int dinerogastado)
+        {
+            dinero -= dinerogastado;
+        }
     }
 }
