@@ -18,10 +18,11 @@ namespace Supermercado
         {
             string hora1 = caja.GetStartWork();
             string hora2 = caja.GetFinishWork();
-            int hora1int = Convert.ToInt32(hora1.Remove(1, 3));
-            int hora2int = Convert.ToInt32(hora2.Remove(1, 3));
+            int hora1int = Convert.ToInt32(hora1.Remove(2, 3));
+            int hora2int = Convert.ToInt32(hora2.Remove(2, 3));
             Random randint = new Random();
-            return randint.Next(hora1int, hora2int) + " : " + randint.Next(0, 60);
+            return randint.Next(hora1int, hora2int) + ":" + randint.Next(10, 60);
         }
+
     }
 }

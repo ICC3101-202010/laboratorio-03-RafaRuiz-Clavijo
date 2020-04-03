@@ -12,6 +12,10 @@ namespace Supermercado
         {
             int opt = 0;
             BasedeDatosSuperMercado bdd = new BasedeDatosSuperMercado();
+            Individuos.Cliente cl = new Individuos.Cliente("Pedro", "Sanchez", "200733095", 45, 5, 2004, "Peru", 250000);
+            Individuos.Empleados.Cajero boxing = new Individuos.Empleados.Cajero("Juan", "Lopez", "134567892", 31, 2, 2000, "Espana", 300000, "Caja", 50, "08:30", "14:30");
+            Producto prods = new Producto("Tomate", 500, "Soproval", 25, "Alimento");
+            bdd.DummyTest(cl, boxing, prods);
             while (opt != 8)
             {
                 Console.WriteLine("MENU SUPERMERCADO JUMBO SHARP");

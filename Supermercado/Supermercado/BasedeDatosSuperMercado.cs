@@ -355,8 +355,8 @@ namespace Supermercado
             Console.WriteLine("");
             Console.WriteLine("Indique numero de la caja a ser atendido: ");
             int chooseyourbox = Convert.ToInt32(Console.ReadLine());
-            newlista.nombrecajero = caja[option - 1].GetName() + " " + caja[option - 1].GetLastName();
-            newlista.horacompra = newlista.GetShopHour(caja[option - 1]);
+            newlista.nombrecajero = caja[chooseyourbox- 1].GetName() + " " + caja[chooseyourbox - 1].GetLastName();
+            newlista.horacompra = newlista.GetShopHour(caja[chooseyourbox - 1]);
             newlista.cajaatendida = chooseyourbox;
 
             if (dinerogastado < dinerodisponible)
@@ -380,10 +380,12 @@ namespace Supermercado
                 Console.WriteLine("");
                 Console.WriteLine("Compra Numero " + i);
                 Console.WriteLine("");
-                Console.WriteLine("Nombre del cliente: ", data.nombrecliente);
-                Console.WriteLine("Nombre del cajero: ", data.nombrecajero);
-                Console.WriteLine("Numero de caja: ", data.cajaatendida);
-                Console.WriteLine("Hora atendido: ", data.horacompra);
+                Console.WriteLine("Nombre del cliente: " + data.nombrecliente);
+                Console.WriteLine("Nombre del cajero: " + data.nombrecajero);
+                Console.WriteLine("Numero de caja: " + data.cajaatendida);
+                Console.WriteLine("Hora atendido: " + data.horacompra);
+                Console.WriteLine("");
+                Console.WriteLine("Objetos comprados: ");
 
                 int a = 1;
                 foreach (Producto data2 in data.listadecompras)
@@ -391,7 +393,15 @@ namespace Supermercado
                     Console.WriteLine(a + ")  Nombre del producto: " + data2.GetName() + " |Marca: " + data2.GetMarca() + " |Precio: " + data2.GetPrice() + " |Tipo: " + data2.GetClass());
                     a += 1;
                 }
+                i += 1;
             }
+        }
+
+        public void DummyTest(Individuos.Cliente cliente, Individuos.Empleados.Cajero cajero, Producto producto)
+        {
+            prod.Add(producto);
+            cli.Add(cliente);
+            caja.Add(cajero);
         }
 
     }
