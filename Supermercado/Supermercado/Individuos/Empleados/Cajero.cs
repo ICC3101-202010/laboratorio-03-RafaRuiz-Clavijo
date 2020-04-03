@@ -19,5 +19,6 @@ namespace Supermercado.Individuos.Empleados
         {
             return this.caja;
         }
+
     }
 }

@@ -285,6 +285,7 @@ namespace Supermercado
             int dinerodisponible = cli[option - 1].GetClientMoney();
             int menucompra = 0;
             ListadeSuperMercado newlista = new ListadeSuperMercado();
+            newlista.nombrecliente = cli[option - 1].GetName() + " " + cli[option - 1].GetLastName();
             int dinerogastado = 0;
             while (menucompra != 3)
             {
@@ -295,6 +296,7 @@ namespace Supermercado
                 Console.WriteLine("2) Ver mis productos");
                 Console.WriteLine("3) Comprar");
                 Console.WriteLine("");
+                Console.WriteLine("Dinero Restante: $" + (dinerodisponible - dinerogastado));
                 Console.WriteLine("Elija con un numero su opcion: ");
                 menucompra = Convert.ToInt32(Console.ReadLine());
                 if (menucompra == 1)
@@ -343,6 +345,20 @@ namespace Supermercado
                 }
             }
 
+            Console.WriteLine("Elija un cajero: ");
+            Console.WriteLine("");
+            int cajadisponible = 1;
+            foreach (Individuos.Empleados.Cajero data in caja) {
+                Console.WriteLine(cajadisponible + ") " + data.GetName() + " " + data.GetLastName() + "| Caja: " + data.GetBox());
+                cajadisponible += 1;
+            }
+            Console.WriteLine("");
+            Console.WriteLine("Indique numero de la caja a ser atendido: ");
+            int chooseyourbox = Convert.ToInt32(Console.ReadLine());
+            newlista.nombrecajero = caja[option - 1].GetName() + " " + caja[option - 1].GetLastName();
+            newlista.horacompra = newlista.GetShopHour(caja[option - 1]);
+            newlista.cajaatendida = chooseyourbox;
+
             if (dinerogastado < dinerodisponible)
             {
                 cli[option - 1].ClientBuy(dinerogastado);
@@ -361,12 +377,19 @@ namespace Supermercado
             int i = 1;
             foreach(ListadeSuperMercado data in compras)
             {
+                Console.WriteLine("");
                 Console.WriteLine("Compra Numero " + i);
+                Console.WriteLine("");
+                Console.WriteLine("Nombre del cliente: ", data.nombrecliente);
+                Console.WriteLine("Nombre del cajero: ", data.nombrecajero);
+                Console.WriteLine("Numero de caja: ", data.cajaatendida);
+                Console.WriteLine("Hora atendido: ", data.horacompra);
+
                 int a = 1;
                 foreach (Producto data2 in data.listadecompras)
                 {
                     Console.WriteLine(a + ")  Nombre del producto: " + data2.GetName() + " |Marca: " + data2.GetMarca() + " |Precio: " + data2.GetPrice() + " |Tipo: " + data2.GetClass());
-                    a += 1
+                    a += 1;
                 }
             }
         }
