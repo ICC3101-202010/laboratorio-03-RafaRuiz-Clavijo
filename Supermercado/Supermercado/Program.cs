@@ -16,7 +16,7 @@ namespace Supermercado
             Individuos.Empleados.Cajero boxing = new Individuos.Empleados.Cajero("Juan", "Lopez", "134567892", 31, 2, 2000, "Espana", 300000, "Caja", 50, "08:30", "14:30");
             Producto prods = new Producto("Tomate", 500, "Soproval", 25, "Alimento");
             bdd.DummyTest(cl, boxing, prods);
-            while (opt != 8)
+            while (opt != 9)
             {
                 Console.WriteLine("MENU SUPERMERCADO JUMBO SHARP");
                 Console.WriteLine("Bienvenido a la simulacion de un supermercado que nunca existio, que desea hacer?");
@@ -28,7 +28,8 @@ namespace Supermercado
                 Console.WriteLine("5) Modificar Empleado");
                 Console.WriteLine("6) Comprar como Cliente");
                 Console.WriteLine("7) Registro de Compras");
-                Console.WriteLine("8) Salir del Supermercado");
+                Console.WriteLine("8) Simulacion Aleatoria");
+                Console.WriteLine("9) Salir del Supermercado");
                 Console.WriteLine("Escriba numero de la opcion: ");
                 opt = Convert.ToInt32(Console.ReadLine());
 
@@ -65,6 +66,11 @@ namespace Supermercado
                 else if (opt == 7)
                 {
                     bdd.VerCompras();
+                }
+
+                else if (opt == 8)
+                {
+                    bdd.GeneracionAleatoria();
                 }
 
                 Console.WriteLine("_________________________________________");

@@ -20,8 +20,20 @@ namespace Supermercado
             string hora2 = caja.GetFinishWork();
             int hora1int = Convert.ToInt32(hora1.Remove(2, 3));
             int hora2int = Convert.ToInt32(hora2.Remove(2, 3));
+            int minuto1int = Convert.ToInt32(hora1.Remove(1, 2));
+            int minuto2int = Convert.ToInt32(hora2.Remove(1, 2));
             Random randint = new Random();
-            return randint.Next(hora1int, hora2int) + ":" + randint.Next(10, 60);
+            int horaatend = randint.Next(hora1int, hora2int);
+            int minuteattend;
+            if (horaatend == hora1int)
+            {
+                minuteattend = randint.Next(minuto1int, 60);
+            }
+            else
+            {
+                minuteattend = randint.Next(10, 60);
+            }
+            return horaatend + ":" + minuteattend;
         }
 
     }

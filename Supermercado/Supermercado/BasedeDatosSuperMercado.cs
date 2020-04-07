@@ -397,6 +397,94 @@ namespace Supermercado
             }
         }
 
+        public void GeneracionAleatoria()
+        {
+            string[] listacliente = new string[16]{"Pedro","Juan","Carlos","Jose","Carlos","Luis","Pablo","Antonia","Javiera","Pilar","Sofia","Alejandra","Josefina","Florencia","Daniela","Maria"};
+            string[] listaapellidocliente = new string[16] { "Daniel", "Lopez", "Perez", "Carrasco", "Zamorano", "Mendez", "Ruiz-Clavijo", "Cuevas", "Guzman", "Fernandez", "Gonzales", "Smith", "Ramirez", "Dragmire", "Vargas", "Garcia" };
+            Random rnd = new Random();
+            for (int i = 0; i < 16; i++) {
+                int index1 = rnd.Next(0, 16);
+                int index2 = rnd.Next(0, 16);
+                int indexfecha = rnd.Next(0, 29);
+                int indexmes = rnd.Next(0, 13);
+                int indexyear = rnd.Next(1960, 2006);
+                string indexrut = "";
+                for (int a = 0; a < 9; a++)
+                {
+                    indexrut += rnd.Next(0, 10);
+                }
+                string indexpais = "Chile";
+                Individuos.Cliente indexcliente = new Individuos.Cliente(listacliente[index1], listaapellidocliente[index2], indexrut, indexfecha, indexmes, indexyear, indexpais, 1000000);
+                cli.Add(indexcliente);
+            }
+            string[] puestos = new string[10] { "Panadero", "Fiambreria", "Pasteleria", "Auxiliar", "Guardia", "Gerente", "Almacenamiento", "Informacion", "Jugueteria", "Publicista" };
+            for (int i = 0; i < 7; i++)
+            {
+                int index1 = rnd.Next(0, 16);
+                int index2 = rnd.Next(0, 16);
+                int indexfecha = rnd.Next(0, 29);
+                int indexmes = rnd.Next(0, 13);
+                int indexyear = rnd.Next(1960, 2006);
+                string indexrut = "";
+                for (int a = 0; a < 9; a++)
+                {
+                    indexrut += rnd.Next(0, 10);
+                }
+                string indexpais = "Chile";
+                int indexsector = rnd.Next(0, 10);
+                Individuos.Empleado indexempleado = new Individuos.Empleado(listacliente[index1], listaapellidocliente[index2], indexrut, indexfecha, indexmes, indexyear, indexpais, 350000, puestos[indexsector], "08:30", "16:30");
+                emp.Add(indexempleado);
+            }
+
+            string[] productos = new string[30] { "Pan Marraqueta", "Pastel de Chocolate", "Arroz", "Fideos", "Salsa de Tomate", "Mayonesa", "Cuaderno", "Mantequilla", "Queso Mantecoso", "Jamon de Pavo", "Detergente", "Papel Confort", "Frutillas", "Salmon Ahumado", "Dulce de Leche", "Leche", "Chocolate", "Autito de Juguete", "Playstation 4", "Audifonos", "Lapiz Pack 12 Colores", "Monopoly", "Pizza Congelada", "Pollo", "Platano", "Pelota de Futbol", "Alcohol Gel", "Vino", "Coca Cola", "Jugo de Naranja"};
+            string[] marcaproductos = new string[30] { "Panaderia Pancito Rico", "Tavelli", "Granja de Pablito", "Granja de Pablito", "Carozzi", "Hellmans", "Rhein", "Soprole", "Colun", "Soproval", "Clorox", "Confort", "Granja de Pablito", "Pescados Yum Yum", "Colun", "Colun", "Nestle", "Hot Wheels", "SONY", "SONY", "Faber Castel","Hasbro","Francesco Virgolini Pizza","Super Pollo","Monkeys Industries","BALLS","19.Inc","Los cultivos de Jesucristo", "Coca Cola", "Livean"};
+            string[] tipoproducto = new string[30] { "Pan", "Pastel/Tortas", "Arroz", "Pastas", "Salsas", "Salsas", "Material", "Lacteo", "Lacteo", "Fiambreria", "Limpieza", "Limpieza", "Fruta", "Pescados/Mariscos", "Lacteo", "Leche", "Lacteo/Dulces", "Juguete", "Videojuegos", "Accesorios", "Materiales", "Juego de Mesa", "Alimentos Congelados", "Carnes", "Frutas", "Juguetes", "Limpieza", "Bebida Alcoholica", "Bebidas", "Jugos" };
+            int[] precioproductos = new int[30];
+            int[] stockproductos = new int[30];
+            for (int i = 0; i < 30; i++)
+            {
+                precioproductos[i] = rnd.Next(100, 15001);
+                stockproductos[i] = rnd.Next(1, 51);
+                Producto indexproducto = new Producto(productos[i], precioproductos[i], marcaproductos[i], stockproductos[i], tipoproducto[i]);
+                prod.Add(indexproducto);
+            }
+            VerPersonas();
+            Console.WriteLine("");
+            VerProductos();
+            Console.WriteLine("");
+            Console.WriteLine("Personas y productos Agregados con exito!!!");
+            Console.WriteLine("");
+            for (int i = 0; i < 5; i++) {
+                ListadeSuperMercado newlista = new ListadeSuperMercado();
+                int cosasacomprar = rnd.Next(1, 6);
+                int clientequecompra = rnd.Next(0, cli.Count()-1);
+                newlista.nombrecliente = cli[clientequecompra].GetName() + cli[clientequecompra].GetLastName();
+                int cajeroatendiendo = rnd.Next(0, caja.Count()-1);
+                newlista.nombrecajero = caja[cajeroatendiendo].GetName() + caja[cajeroatendiendo].GetLastName();
+                newlista.cajaatendida = caja[cajeroatendiendo].GetBox();
+
+                for (int a = 0; a < cosasacomprar; a++)
+                {
+                    int productocomprando = rnd.Next(1, prod.Count()-1);
+                    int cantcompra = rnd.Next(1, prod[productocomprando].GetCantidad());
+                    for (int e = 0; e < cantcompra; e++)
+                    {
+                        if (cli[clientequecompra].GetClientMoney() > prod[productocomprando].GetPrice())
+                        {
+                            prod[productocomprando].CambiarCantidad(1);
+                            cli[clientequecompra].ClientBuy(prod[productocomprando].GetPrice());
+                            newlista.listadecompras.Add(prod[productocomprando]);
+                        }
+                    }
+                }
+                compras.Add(newlista);
+
+            }
+            VerCompras();
+            Console.WriteLine("");
+            Console.WriteLine("Compras realizadas con exito");
+        }
+
         public void DummyTest(Individuos.Cliente cliente, Individuos.Empleados.Cajero cajero, Producto producto)
         {
             prod.Add(producto);
