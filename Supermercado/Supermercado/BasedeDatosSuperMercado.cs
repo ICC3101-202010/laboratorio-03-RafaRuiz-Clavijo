@@ -458,10 +458,12 @@ namespace Supermercado
                 ListadeSuperMercado newlista = new ListadeSuperMercado();
                 int cosasacomprar = rnd.Next(1, 6);
                 int clientequecompra = rnd.Next(0, cli.Count()-1);
-                newlista.nombrecliente = cli[clientequecompra].GetName() + cli[clientequecompra].GetLastName();
+                newlista.nombrecliente = cli[clientequecompra].GetName() + " " + cli[clientequecompra].GetLastName();
                 int cajeroatendiendo = rnd.Next(0, caja.Count()-1);
-                newlista.nombrecajero = caja[cajeroatendiendo].GetName() + caja[cajeroatendiendo].GetLastName();
+                newlista.nombrecajero = caja[cajeroatendiendo].GetName() + " " + caja[cajeroatendiendo].GetLastName();
                 newlista.cajaatendida = caja[cajeroatendiendo].GetBox();
+                newlista.horacompra = newlista.GetShopHour(caja[cajeroatendiendo]);
+
 
                 for (int a = 0; a < cosasacomprar; a++)
                 {
